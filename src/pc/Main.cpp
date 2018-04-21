@@ -1,9 +1,12 @@
 #include "JudgementDayCommon.hpp"
 
+#include "components/Board.hpp"
 #include "components/Navigation.hpp"
 #include "components/Player.hpp"
 #include "components/UIEventButton.hpp"
 #include "components/Waypoint.hpp"
+
+#include "behaviors/actions/RollMovement.hpp"
 
 using namespace crimild;
 using namespace crimild::messaging;
@@ -15,10 +18,13 @@ void init_all( void )
     crimild::init();
     crimild::scripting::init();
     
+    CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Board )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Navigation )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Player )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::UIEventButton )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Waypoint )
+    
+    CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::behaviors::actions::RollMovement )
 }
 
 int main( int argc, char **argv )

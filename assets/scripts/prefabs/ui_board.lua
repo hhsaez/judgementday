@@ -1,3 +1,5 @@
+require 'assets/scripts/utils/behaviors'
+
 function createUIEventButton( config )
 	return {
 		type = 'crimild::Text',
@@ -18,12 +20,50 @@ function createUIEventButton( config )
 	}
 end
 
+function createUIBoardPlay()
+	return {
+		type = 'crimild::Group',
+		name = 'play',
+		nodes = {
+			createUIEventButton( { eventName = 'quit', title = 'QUIT', translate = { -0.5, 0.375, 0.0 } } ),
+			createUIEventButton( { eventName = 'move', title = 'MOVE', translate = { 0.0, -0.375, 0.0 } } ),
+		},
+	}
+end
+
 function createUIBoard( config )
 	return {
 		type = 'crimild::Group',
 		nodes = {
-			createUIEventButton( { eventName = 'quitGame', title = 'QUIT', translate = { -0.5, 0.375, 0.0 } } ),
-			createUIEventButton( { eventName = 'rollMovement', title = 'MOVE', translate = { 0.0, -0.375, 0.0 } } ),
+			createUIBoardPlay(),
+		},
+		components = {
+			createComponentBehaviorController(
+				{
+					events = {
+						createEventBehavior(
+							'playerWillMove',
+							createBehaviorSequence(
+								{
+									behaviors = {
+										createBehaviorEnableNode( { node = 'play', enabled = false } ),
+									},
+								}
+							)
+						),
+						createEventBehavior(
+							'playerDidMove',
+							createBehaviorSequence(
+								{
+									behaviors = {
+										createBehaviorEnableNode( { node = 'play', enabled = true } ),
+									},
+								}
+							)
+						)					
+					},
+				}
+			),
 		},
 	}
 end

@@ -5,15 +5,6 @@
 
 namespace judgementday {
     
-    namespace messaging {
-        
-        struct BoardReady {
-            crimild::Node *board;
-            crimild::Node *start;
-        };
-        
-    }
-
 	namespace components {
 
 		class Navigation :
@@ -25,7 +16,9 @@ namespace judgementday {
 			explicit Navigation( crimild::scripting::ScriptEvaluator & );
 			virtual ~Navigation( void );
             
-            virtual void start( void ) override;
+            void configure( void );
+                
+            crimild::Node *getStartWaypoint( void );
             
         public:
             virtual void renderDebugInfo( crimild::Renderer *renderer, crimild::Camera *camera ) override;

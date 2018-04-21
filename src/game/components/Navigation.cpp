@@ -17,7 +17,7 @@ Navigation::~Navigation( void )
 
 }
 
-void Navigation::start( void )
+void Navigation::configure( void )
 {
     auto root = getNode< Group >();
     const auto N = root->getNodeCount();
@@ -29,10 +29,11 @@ void Navigation::start( void )
             currentWP->setNext( nextWP->getNode() );
         }
     }
-    
-    auto start = root->getNodeAt( 0 );
-    
-    broadcastMessage( messaging::BoardReady { root, start } );
+}
+
+Node *Navigation::getStartWaypoint( void )
+{
+    return getNode< Group >()->getNodeAt( 0 );
 }
 
 void Navigation::renderDebugInfo( Renderer *renderer, Camera *camera)

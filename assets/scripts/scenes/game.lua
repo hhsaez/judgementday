@@ -1,17 +1,8 @@
 require 'assets/scripts/prefabs/board'
 require 'assets/scripts/prefabs/ui_board'
+require 'assets/scripts/prefabs/player'
 
-local player = {
-	type = 'crimild::Group',
-	nodes = {
-		{
-			filename = 'assets/models/marine.obj',
-		},
-	},
-	components = {
-		{ type = 'judgementday::components::Player', },
-	},
-}
+local player = createPlayer()
 
 local board = createBoard()
 
