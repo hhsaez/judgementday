@@ -5,6 +5,8 @@
 
 namespace judgementday {
     
+    class Action;
+    
     namespace messaging {
         
         struct SpawnPlayer {
@@ -31,6 +33,10 @@ namespace judgementday {
                 
             void setCurrentWaypoint( crimild::Node *wp ) { _currentWaypoint = wp; }
             crimild::Node *getCurrentWaypoint( void ) { return _currentWaypoint; }
+                
+        private:
+            void onTurnBegan( void );
+            void onActionSelected( Action *action );
                 
         private:
             Board *_board = nullptr;

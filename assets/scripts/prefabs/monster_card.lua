@@ -1,8 +1,9 @@
 require 'assets/scripts/utils/behaviors'
 
-function createMonsterCardTitle( config )
+function createMonsterCardName( config )
 	return {
 		type = 'crimild::Text',
+		name = 'name',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
@@ -14,9 +15,10 @@ function createMonsterCardTitle( config )
 	}
 end
 
-function createMonsterCardDescription( config )
+function createMonsterCardHP( config )
 	return {
 		type = 'crimild::Text',
+		name = 'hp',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
@@ -42,11 +44,13 @@ function createMonsterCard( config )
 					translate = { 0.0, 0.0, -0.01 },
 				},
 			},
-			createMonsterCardTitle( { title = title } ),
-			createMonsterCardDescription( { text = text } ),
-			--createMonsterCardAction(),
+			createMonsterCardName( { title = title } ),
+			createMonsterCardHP( { text = text } ),
 		},
 		components = {
+			{
+				type = 'judgementday::components::MonsterCard',
+			},
 			{
 				type = 'crimild::BehaviorController',
 				events = {

@@ -4,12 +4,29 @@
 #include "JudgementDayCommon.hpp"
 
 namespace judgementday {
+    
+    class Action;
 
     namespace messaging {
         
         struct BoardReady {
             crimild::Node *board;
         };
+        
+        struct CombatBegan {};
+
+		struct BeginPlayerTurn {};
+		struct BeginPlayerUnkeep {};
+		struct PlayerDrawCard {};
+		struct EndPlayerUnkeep {};
+		struct BeginPlayerMainPhase {};
+        struct PlayerSelectedAction { Action *action; };
+        struct PlayerDidAttack { crimild::Int16 damage; };
+        struct PlayerExecutedAction {};
+		struct EndPlayerMainPhase {};
+		struct EndPlayerTurn {};
+        
+        struct CombatEnded {};
         
     }
     

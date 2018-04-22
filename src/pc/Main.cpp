@@ -1,8 +1,14 @@
 #include "JudgementDayCommon.hpp"
 
+#include "components/ActionCard.hpp"
+#include "components/Actor.hpp"
 #include "components/Board.hpp"
+#include "components/EncounterCard.hpp"
+#include "components/MonsterCard.hpp"
 #include "components/Navigation.hpp"
 #include "components/Player.hpp"
+#include "components/PlayerCard.hpp"
+#include "components/PlayerHand.hpp"
 #include "components/UIEventButton.hpp"
 #include "components/Waypoint.hpp"
 
@@ -18,9 +24,15 @@ void init_all( void )
     crimild::init();
     crimild::scripting::init();
     
+    CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::ActionCard )
+    CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Actor )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Board )
+    CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::EncounterCard )
+    CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::MonsterCard )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Navigation )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Player )
+    CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::PlayerCard )
+    CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::PlayerHand )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::UIEventButton )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Waypoint )
     

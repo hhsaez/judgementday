@@ -3,10 +3,10 @@ require 'assets/scripts/utils/behaviors'
 function createActionCardTitle( config )
 	return {
 		type = 'crimild::Text',
+		name = 'title',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
-		text = config.title,
 		textAnchor = 'center',
 		transformation = {
 			translate = { 0.0, 0.1, 0.0 },
@@ -17,10 +17,10 @@ end
 function createActionCardDescription( config )
 	return {
 		type = 'crimild::Text',
+		name = 'description',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
-		text = config.text,
 		textAnchor = 'center',
 		transformation = {
 			translate = { 0.0, 0.0, 0.0 },
@@ -28,10 +28,21 @@ function createActionCardDescription( config )
 	}
 end
 
+function createActionCardCost( config )
+	return {
+		type = 'crimild::Text',
+		name = 'cost',
+		font = 'assets/fonts/Verdana',
+		textSize = 0.025,
+		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textAnchor = 'center',
+		transformation = {
+			translate = { 0.0, -0.1, 0.0 },
+		},
+	}
+end
+
 function createActionCard( config )
-	local title = 'Action'
-	local text = '10/10'
-	
 	return {
 		type = 'crimild::Group',
 		nodes = {
@@ -42,10 +53,14 @@ function createActionCard( config )
 					translate = { 0.0, 0.0, -0.01 },
 				},
 			},
-			createActionCardTitle( { title = title } ),
-			createActionCardDescription( { text = text } ),
+			createActionCardTitle(),
+			createActionCardDescription(),
+			createActionCardCost(),
 		},
 		components = {
+			{
+				type = 'judgementday::components::ActionCard',
+			},
 			{
 				type = 'crimild::BehaviorController',
 				events = {

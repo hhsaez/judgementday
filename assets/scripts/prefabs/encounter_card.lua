@@ -68,6 +68,9 @@ function createEncounterCard( config )
 		},
 		components = {
 			{
+				type = 'judgementday::components::EncounterCard',
+			},
+			{
 				type = 'crimild::BehaviorController',
 				events = {
 					createEventBehavior(

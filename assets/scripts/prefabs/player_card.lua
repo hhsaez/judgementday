@@ -1,12 +1,12 @@
 require 'assets/scripts/utils/behaviors'
 
-function createPlayerCardTitle( config )
+function createPlayerCardName( config )
 	return {
 		type = 'crimild::Text',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
-		text = config.title,
+		text = 'player',
 		textAnchor = 'center',
 		transformation = {
 			translate = { 0.0, 0.1, 0.0 },
@@ -14,13 +14,14 @@ function createPlayerCardTitle( config )
 	}
 end
 
-function createPlayerCardDescription( config )
+function createPlayerCardHP( config )
 	return {
 		type = 'crimild::Text',
+		name = 'hp',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
-		text = config.text,
+		text = '0/0',
 		textAnchor = 'center',
 		transformation = {
 			translate = { 0.0, 0.0, 0.0 },
@@ -28,10 +29,22 @@ function createPlayerCardDescription( config )
 	}
 end
 
+function createPlayerCardAP( config )
+	return {
+		type = 'crimild::Text',
+		name = 'ap',
+		font = 'assets/fonts/Verdana',
+		textSize = 0.025,
+		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		text = '0/0',
+		textAnchor = 'center',
+		transformation = {
+			translate = { 0.0, -0.1, 0.0 },
+		},
+	}
+end
+
 function createPlayerCard( config )
-	local title = 'Player'
-	local text = '10/10'
-	
 	return {
 		type = 'crimild::Group',
 		nodes = {
@@ -42,10 +55,14 @@ function createPlayerCard( config )
 					translate = { 0.0, 0.0, -0.01 },
 				},
 			},
-			createPlayerCardTitle( { title = title } ),
-			createPlayerCardDescription( { text = text } ),
+			createPlayerCardName(),
+			createPlayerCardHP(),
+			createPlayerCardAP(),
 		},
 		components = {
+			{
+				type = 'judgementday::components::PlayerCard',
+			},
 			{
 				type = 'crimild::BehaviorController',
 				events = {

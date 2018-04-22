@@ -24,14 +24,22 @@ void Board::start( void )
     registerMessageHandler< messaging::UIEvent >( [ this ]( messaging::UIEvent const &m ) {
         auto eventName = m.eventName;
         
+		broadcastMessage( crimild::messaging::BehaviorEvent { eventName } );
+
         if ( eventName == "quit" ) {
             Simulation::getInstance()->stop();
         }
-        else {
-            broadcastMessage( crimild::messaging::BehaviorEvent { eventName } );
-        }
+		else if ( eventName == "combatWillStart" ) {
+            broadcastMessage( messaging::CombatBegan {} );
+			broadcastMessage( messaging::BeginPlayerTurn {} );
+		}
     });
-
+    
+    registerMessageHandler< messaging::EndPlayerTurn >( [ this ]( messaging::EndPlayerTurn const & ) {
+        //broadcastMessage( crimild::messaging::BehaviorEvent { "combatDidEnd" } );
+        broadcastMessage( messaging::BeginPlayerTurn {} );
+    });
+    
     getComponent< Navigation >()->configure();
 
     broadcastMessage( messaging::BoardReady { getNode() } );

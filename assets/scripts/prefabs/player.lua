@@ -1,4 +1,5 @@
 require 'assets/scripts/utils/behaviors'
+require 'assets/scripts/prefabs/action'
 
 -- Player Behaviors
 
@@ -71,6 +72,20 @@ function createPlayer()
 				events = {
 					createEventBehavior( 'move', createPlayerBehaviorMove() ),
 				},
+			},
+			{
+				type = 'judgementday::components::Actor',
+				hp = 10,
+				maxHP = 10,
+				ap = 0,
+				maxAP = 10,
+				deck = {
+					createActionPistol(),
+					createActionPistol(),
+					createActionPistol(),
+					createActionMedKit(),
+					createActionMedKit(),
+				}
 			},
 		},
 	}
