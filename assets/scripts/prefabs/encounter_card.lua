@@ -39,7 +39,7 @@ function createEncounterCardAction( config )
 		components = {
 			{
 				type = 'judgementday::components::UIEventButton',
-				eventName = 'encounterDidEnd',
+				eventName = 'combatWillStart',
 			},
 		},
 		transformation = {

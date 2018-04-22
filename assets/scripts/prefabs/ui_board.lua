@@ -1,5 +1,6 @@
 require 'assets/scripts/utils/behaviors'
 require 'assets/scripts/prefabs/encounter_card'
+require 'assets/scripts/prefabs/ui_combat'
 
 function createUIEventButton( config )
 	return {
@@ -48,6 +49,7 @@ function createUIBoard( config )
 		nodes = {
 			createUIBoardPlay(),
 			createUIEncounter(),
+			createUICombat(),
 		},
 		components = {
 			createComponentBehaviorController(
@@ -59,6 +61,7 @@ function createUIBoard( config )
 									behaviors = {
 										createBehaviorEnableNode( { node = 'play', enabled = true } ),
 										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
 									},
 								}
 							)
@@ -84,11 +87,32 @@ function createUIBoard( config )
 							)
 						),
 						createEventBehavior(
-							'encounterDidEnd',
+							'combatWillStart',
 							createBehaviorSequence(
 								{
 									behaviors = {
 										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+										createBehaviorEnableNode( { node = 'combat', enabled = true } ),
+									},
+								}
+							)
+						),
+						createEventBehavior(
+							'combatDidEnd',
+							createBehaviorSequence(
+								{
+									behaviors = {
+										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
+										createBehaviorEnableNode( { node = 'play', enabled = true } ),
+									},
+								}
+							)
+						),
+						createEventBehavior(
+							'encounterDidEnd',
+							createBehaviorSequence(
+								{
+									behaviors = {
 										createBehaviorEnableNode( { node = 'play', enabled = true } ),
 									},
 								}
