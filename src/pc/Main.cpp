@@ -42,7 +42,8 @@ int main( int argc, char **argv )
     AssetManager::getInstance()->loadFont( AssetManager::FONT_SYSTEM, "assets/fonts/Courier New.txt" );
     Profiler::getInstance()->setOutputHandler( crimild::alloc< ProfilerScreenOutputHandler >() );
     
-    Simulation::getInstance()->loadScene( "assets/scripts/scenes/game.lua", crimild::alloc< crimild::scripting::LuaSceneBuilder >() );
+    auto scene = settings->get< std::string >( "scene", "assets/scripts/scenes/game.lua" );
+    Simulation::getInstance()->loadScene( scene, crimild::alloc< crimild::scripting::LuaSceneBuilder >() );
     
     sim->registerMessageHandler< crimild::messaging::KeyReleased >( [settings]( crimild::messaging::KeyReleased const &msg ) {
         switch ( msg.key ) {

@@ -38,6 +38,7 @@ function createPlayerBehaviorMove( config )
 				),
 				createBehaviorMotionReset(),
 				createBehaviorTrigger( { eventName = 'playerDidMove' } ),
+				createBehaviorExecuteBehaviorOnTarget( { behaviorName = 'encounter' } ),
 			},
 		}
 	)
@@ -48,6 +49,7 @@ end
 function createPlayer() 
 	local player = {
 		type = 'crimild::Group',
+		name = 'player',
 		nodes = {
 			{
 				filename = 'assets/models/marine.obj',

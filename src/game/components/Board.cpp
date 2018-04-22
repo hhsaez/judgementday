@@ -27,8 +27,8 @@ void Board::start( void )
         if ( eventName == "quit" ) {
             Simulation::getInstance()->stop();
         }
-        else if ( eventName == "move" ) {
-            broadcastMessage( crimild::messaging::BehaviorEvent { "move" } );
+        else {
+            broadcastMessage( crimild::messaging::BehaviorEvent { eventName } );
         }
     });
 

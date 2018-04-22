@@ -1,4 +1,5 @@
 require 'assets/scripts/utils/behaviors'
+require 'assets/scripts/prefabs/encounter_card'
 
 function createUIEventButton( config )
 	return {
@@ -31,16 +32,37 @@ function createUIBoardPlay()
 	}
 end
 
+function createUIEncounter()
+	return {
+		type = 'crimild::Group',
+		name = 'encounter',
+		nodes = {
+			createEncounterCard(),
+		},
+	}
+end
+
 function createUIBoard( config )
 	return {
 		type = 'crimild::Group',
 		nodes = {
 			createUIBoardPlay(),
+			createUIEncounter(),
 		},
 		components = {
 			createComponentBehaviorController(
 				{
 					events = {
+						createSceneStartedEventBehavior(
+							createBehaviorSequence(
+								{
+									behaviors = {
+										createBehaviorEnableNode( { node = 'play', enabled = true } ),
+										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+									},
+								}
+							)
+						),
 						createEventBehavior(
 							'playerWillMove',
 							createBehaviorSequence(
@@ -52,10 +74,21 @@ function createUIBoard( config )
 							)
 						),
 						createEventBehavior(
-							'playerDidMove',
+							'encounterWillStart',
 							createBehaviorSequence(
 								{
 									behaviors = {
+										createBehaviorEnableNode( { node = 'encounter', enabled = true } ),
+									},
+								}
+							)
+						),
+						createEventBehavior(
+							'encounterDidEnd',
+							createBehaviorSequence(
+								{
+									behaviors = {
+										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
 										createBehaviorEnableNode( { node = 'play', enabled = true } ),
 									},
 								}
