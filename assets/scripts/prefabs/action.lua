@@ -8,6 +8,17 @@ function createAction( config )
 	}
 end
 
+function createActionPunch()
+	return createAction(
+		{
+			name = 'Punch',
+			description = 'Deals 1 point of damage to target',
+			damage = 1,
+			cost = 2,
+		}
+	)
+end
+
 function createActionPistol()
 	return createAction(
 		{

@@ -1,8 +1,11 @@
 require 'assets/scripts/prefabs/board'
 require 'assets/scripts/prefabs/ui_board'
 require 'assets/scripts/prefabs/player'
+require 'assets/scripts/prefabs/encounter_manager'
 
 local player = createPlayer()
+
+local encounterManager = createEncounterManager()
 
 local board = createBoard()
 
@@ -30,6 +33,7 @@ scene = {
 	nodes = {
 		camera,
 		player,
+		encounterManager,
 		board,
 	},
 }

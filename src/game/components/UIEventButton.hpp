@@ -21,6 +21,7 @@ namespace judgementday {
 			CRIMILD_IMPLEMENT_RTTI( judgementday::components::UIEventButton )
 			
 		public:
+            explicit UIEventButton( std::string eventName );
 			explicit UIEventButton( crimild::scripting::ScriptEvaluator & );
 			virtual ~UIEventButton( void );
                 

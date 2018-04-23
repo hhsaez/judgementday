@@ -6,6 +6,12 @@ using namespace judgementday::components;
 using namespace crimild;
 using namespace crimild::scripting;
 
+UIEventButton::UIEventButton( std::string eventName )
+    : _eventName( eventName )
+{
+    
+}
+
 UIEventButton::UIEventButton( ScriptEvaluator &eval )
 {
 	eval.getPropValue( "eventName", _eventName );

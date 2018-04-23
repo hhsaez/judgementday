@@ -1,7 +1,5 @@
 require 'assets/scripts/utils/behaviors'
 require 'assets/scripts/prefabs/encounter_card'
-require 'assets/scripts/prefabs/encounter_completed_card'
-require 'assets/scripts/prefabs/encounter_failed_card'
 require 'assets/scripts/prefabs/ui_combat'
 
 function createUIEventButton( config )
@@ -40,7 +38,7 @@ function createUIEncounter()
 		type = 'crimild::Group',
 		name = 'encounter',
 		nodes = {
-			createEncounterCard(),
+			createEncounterCard( { cardType = 'encounter_begin' } ),
 		},
 	}
 end
@@ -50,7 +48,7 @@ function createUIEncounterCompleted()
 		type = 'crimild::Group',
 		name = 'encounterCompleted',
 		nodes = {
-			createEncounterCompletedCard(),
+			createEncounterCard( { cardType = 'encounter_succeeded' } ),
 		},
 	}
 end
@@ -60,7 +58,7 @@ function createUIEncounterFailed()
 		type = 'crimild::Group',
 		name = 'encounterFailed',
 		nodes = {
-			createEncounterFailedCard(),
+			createEncounterCard( { cardType = 'encounter_failed' } ),
 		},
 	}
 end
@@ -98,6 +96,10 @@ function createUIBoard( config )
 								{
 									behaviors = {
 										createBehaviorEnableNode( { node = 'play', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterFailed', enabled = false } ),
+										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
 									},
 								}
 							)
@@ -107,7 +109,11 @@ function createUIBoard( config )
 							createBehaviorSequence(
 								{
 									behaviors = {
+										createBehaviorEnableNode( { node = 'play', enabled = false } ),
 										createBehaviorEnableNode( { node = 'encounter', enabled = true } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterFailed', enabled = false } ),
+										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
 									},
 								}
 							)
@@ -117,7 +123,10 @@ function createUIBoard( config )
 							createBehaviorSequence(
 								{
 									behaviors = {
+										createBehaviorEnableNode( { node = 'play', enabled = false } ),
 										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterFailed', enabled = false } ),
 										createBehaviorEnableNode( { node = 'combat', enabled = true } ),
 									},
 								}
@@ -128,19 +137,25 @@ function createUIBoard( config )
 							createBehaviorSequence(
 								{
 									behaviors = {
+										createBehaviorEnableNode( { node = 'play', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterFailed', enabled = false } ),
 										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
-										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = true } ),
 									},
 								}
 							)
 						),
 						createEventBehavior(
-							'encounterDidEnd',
+							'encounterDidSucceed',
 							createBehaviorSequence(
 								{
 									behaviors = {
-										createBehaviorEnableNode( { node = 'play', enabled = true } ),
-										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = false } ),
+										createBehaviorEnableNode( { node = 'play', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = true } ),
+										createBehaviorEnableNode( { node = 'encounterFailed', enabled = false } ),
+										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
 									},
 								}
 							)
@@ -150,12 +165,29 @@ function createUIBoard( config )
 							createBehaviorSequence(
 								{
 									behaviors = {
-										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
+										createBehaviorEnableNode( { node = 'play', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = false } ),
 										createBehaviorEnableNode( { node = 'encounterFailed', enabled = true } ),
+										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
 									},
 								}
 							)
-						)					
+						),			
+						createEventBehavior(
+							'encounterDidEnd',
+							createBehaviorSequence(
+								{
+									behaviors = {
+										createBehaviorEnableNode( { node = 'play', enabled = true } ),
+										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterFailed', enabled = false } ),
+										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
+									},
+								}
+							)
+						),
 					},
 				}
 			),

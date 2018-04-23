@@ -3,13 +3,14 @@ require 'assets/scripts/utils/behaviors'
 function createEncounterCardTitle( config )
 	return {
 		type = 'crimild::Text',
+		name = 'title',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
 		text = config.title,
 		textAnchor = 'center',
 		transformation = {
-			translate = { 0.0, 0.1, 0.0 },
+			translate = { 0.0, 0.125, 0.0 },
 		},
 	}
 end
@@ -17,13 +18,14 @@ end
 function createEncounterCardDescription( config )
 	return {
 		type = 'crimild::Text',
+		name = 'description',
 		font = 'assets/fonts/Verdana',
-		textSize = 0.025,
+		textSize = 0.015,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
 		text = config.text,
 		textAnchor = 'center',
 		transformation = {
-			translate = { 0.0, 0.0, 0.0 },
+			translate = { 0.0, 0.075, 0.0 },
 		},
 	}
 end
@@ -31,26 +33,20 @@ end
 function createEncounterCardAction( config )
 	return {
 		type = 'crimild::Text',
+		name = 'action',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 0.0, 0.0, 1.0 },
 		text = 'Fight!',
 		textAnchor = 'center',
-		components = {
-			{
-				type = 'judgementday::components::UIEventButton',
-				eventName = 'combatWillStart',
-			},
-		},
 		transformation = {
-			translate = { 0.0, -0.1, 0.0 },
+			translate = { 0.0, -0.15, 0.0 },
 		},
 	}
 end
 
 function createEncounterCard( config )
-	local title = 'Encounter Title'
-	local text = 'Lorem Ipsum'
+	config = config or {}
 	
 	return {
 		type = 'crimild::Group',
@@ -69,20 +65,18 @@ function createEncounterCard( config )
 		components = {
 			{
 				type = 'judgementday::components::EncounterCard',
-			},
-			{
-				type = 'crimild::BehaviorController',
-				events = {
-					createEventBehavior(
-						'begin_encounter',
-						createBehaviorTransform( { translate = { 0.0, 0.0, 0.0 } } )
-					),
+				cardType = config.cardType,
+				encounters = {
+					{
+						id = 'e01',
+						title = 'Barracks',
+						description = 'aca va la descripcion',
+						action = 'a pelear',
+					}
 				},
 			},
 		},
-		transformation = {
-			translate = { 0.0, 0.0, 0.0 },
-		},
+		transformation = config.transformation,
 	}
 end
 

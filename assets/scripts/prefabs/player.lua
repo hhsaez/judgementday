@@ -71,6 +71,7 @@ function createPlayer()
 				},
 				events = {
 					createEventBehavior( 'move', createPlayerBehaviorMove() ),
+					createSceneStartedEventBehavior( createBehaviorTrigger( { eventName = 'encounterWillStart' } ) ),
 				},
 			},
 			{
@@ -80,11 +81,11 @@ function createPlayer()
 				ap = 0,
 				maxAP = 10,
 				deck = {
-					createActionPistol(),
-					createActionPistol(),
-					createActionPistol(),
-					createActionMedKit(),
-					createActionMedKit(),
+					createActionPunch(),
+					createActionPunch(),
+					createActionPunch(),
+					createActionPunch(),
+					createActionPunch(),
 				}
 			},
 		},

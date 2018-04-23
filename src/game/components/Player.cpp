@@ -48,6 +48,12 @@ void Player::start( void )
     });
 }
 
+void Player::loot( crimild::containers::Array<crimild::SharedPointer< Action >> &actions )
+{
+    auto actor = getComponent< Actor >();
+    actor->addActionsToDeck( actions );
+}
+
 void Player::onTurnBegan( void )
 {
     broadcastMessage( messaging::BeginPlayerUnkeep {} );

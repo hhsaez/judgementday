@@ -22,7 +22,8 @@ namespace judgementday {
 
 		class Player :
             public crimild::NodeComponent,
-            public crimild::Messenger {
+            public crimild::Messenger,
+            public crimild::DynamicSingleton< Player > {
 			CRIMILD_IMPLEMENT_RTTI( judgementday::components::Player )
 			
 		public:
@@ -33,6 +34,8 @@ namespace judgementday {
                 
             void setCurrentWaypoint( crimild::Node *wp ) { _currentWaypoint = wp; }
             crimild::Node *getCurrentWaypoint( void ) { return _currentWaypoint; }
+                
+            void loot( crimild::containers::Array< crimild::SharedPointer< Action >> &actions );
                 
         private:
             void onTurnBegan( void );

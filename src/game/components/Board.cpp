@@ -45,10 +45,12 @@ void Board::start( void )
     registerMessageHandler< messaging::MonsterKilled >( [ this ]( messaging::MonsterKilled const & ) {
         broadcastMessage( messaging::CombatEnded {} );
         broadcastMessage( crimild::messaging::BehaviorEvent { "combatDidEnd" } );
+        broadcastMessage( crimild::messaging::BehaviorEvent { "encounterDidSucceed" } );
     });
     
     registerMessageHandler< messaging::PlayerKilled >( [ this ]( messaging::PlayerKilled const & ) {
         broadcastMessage( messaging::CombatEnded {} );
+        broadcastMessage( crimild::messaging::BehaviorEvent { "combatDidEnd" } );
         broadcastMessage( crimild::messaging::BehaviorEvent { "encounterDidFail" } );
     });
     

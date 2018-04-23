@@ -45,6 +45,13 @@ void Actor::update( const Clock &c )
     }
 }
 
+void Actor::addActionsToDeck( ActionArray &actions )
+{
+    actions.each( [ this ]( SharedPointer< Action > &action, crimild::Size ) {
+        _deck.add( action );
+    });
+}
+
 bool Actor::drawCard( crimild::Int16 maxHandSize )
 {
     if ( getHand().size() == maxHandSize ) {

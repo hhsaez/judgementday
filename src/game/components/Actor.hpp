@@ -42,6 +42,7 @@ namespace judgementday {
 			
 			ActionArray &getHand( void ) { return _hand; }
                 
+            void addActionsToDeck( ActionArray &actions );
             bool drawCard( crimild::Int16 maxHandSize );
             void discard( Action *action );
                 
