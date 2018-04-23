@@ -37,6 +37,7 @@ namespace judgementday {
         private:
             void onTurnBegan( void );
             void onActionSelected( Action *action );
+            void onHit( crimild::Int16 damage );
                 
         private:
             Board *_board = nullptr;

@@ -49,7 +49,7 @@ void PlayerHand::refreshCards( void )
 	auto playerActor = _player->getComponent< Actor >();
 
 	const auto cardsInHand = playerActor->getHand().size();
-    crimild::Real32 x = -0.5f;
+    crimild::Real32 x = -1.0f;
     crimild::Size i = 0;
     for ( ; i < cardsInHand; i++ ) {
         auto cardNode = root->getNodeAt( i );
@@ -60,7 +60,7 @@ void PlayerHand::refreshCards( void )
             card->setAction( action );
         }
 
-        x += 0.25f;
+        x += 0.5f;
     }
     
     for ( ; i < root->getNodeCount(); i++ ) {

@@ -42,6 +42,10 @@ void Player::start( void )
     registerMessageHandler< messaging::PlayerSelectedAction >( [ this ]( messaging::PlayerSelectedAction const &m ) {
         onActionSelected( m.action );
     });
+
+    registerMessageHandler< messaging::MonsterDidAttack >( [ this ]( messaging::MonsterDidAttack const &m ) {
+        onHit( m.damage );
+    });
 }
 
 void Player::onTurnBegan( void )
@@ -82,5 +86,14 @@ void Player::onActionSelected( Action *action )
     broadcastMessage( messaging::PlayerExecutedAction {} );
     broadcastMessage( messaging::EndPlayerMainPhase {} );
     broadcastMessage( messaging::EndPlayerTurn {} );
+}
+
+void Player::onHit( crimild::Int16 damage )
+{
+    auto actor = getComponent< Actor >();
+    actor->setHP( actor->getHP() - damage );
+    if ( actor->getHP() <= 0 ) {
+        broadcastMessage( messaging::PlayerKilled {} );
+    }
 }
 

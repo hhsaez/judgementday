@@ -24,6 +24,9 @@ namespace judgementday {
 
             virtual void start( void ) override;
 			virtual void update( const crimild::Clock & ) override;
+                
+            const std::string &getName( void ) const { return _name; }
+            const std::string &getDescription( void ) const { return _description; }
 			
 			void setHP( crimild::Int16 hp ) { _hp = hp; }
 			crimild::Int16 getHP( void ) const { return _hp; }
@@ -50,6 +53,8 @@ namespace judgementday {
             void onCombatBegan( void );
 			
 		private:
+            std::string _name;
+            std::string _description;
 			crimild::Int16 _hp;
 			crimild::Int16 _maxHP;
 			crimild::Int16 _ap;

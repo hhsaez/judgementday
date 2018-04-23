@@ -7,10 +7,23 @@ function createMonsterCardName( config )
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
-		text = config.title,
 		textAnchor = 'center',
 		transformation = {
 			translate = { 0.0, 0.1, 0.0 },
+		},
+	}
+end
+
+function createMonsterCardDescription( config )
+	return {
+		type = 'crimild::Text',
+		name = 'description',
+		font = 'assets/fonts/Verdana',
+		textSize = 0.025,
+		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textAnchor = 'center',
+		transformation = {
+			translate = { 0.0, 0.05, 0.0 },
 		},
 	}
 end
@@ -22,18 +35,28 @@ function createMonsterCardHP( config )
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
 		textColor = { 1.0, 1.0, 1.0, 1.0 },
-		text = config.text,
 		textAnchor = 'center',
 		transformation = {
-			translate = { 0.0, 0.0, 0.0 },
+			translate = { 0.0, -0.05, 0.0 },
+		},
+	}
+end
+
+function createMonsterCardAP( config )
+	return {
+		type = 'crimild::Text',
+		name = 'ap',
+		font = 'assets/fonts/Verdana',
+		textSize = 0.025,
+		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textAnchor = 'center',
+		transformation = {
+			translate = { 0.0, -0.1, 0.0 },
 		},
 	}
 end
 
 function createMonsterCard( config )
-	local title = 'Monster'
-	local text = '10/10'
-	
 	return {
 		type = 'crimild::Group',
 		nodes = {
@@ -44,21 +67,14 @@ function createMonsterCard( config )
 					translate = { 0.0, 0.0, -0.01 },
 				},
 			},
-			createMonsterCardName( { title = title } ),
-			createMonsterCardHP( { text = text } ),
+			createMonsterCardName(),
+			createMonsterCardDescription(),
+			createMonsterCardHP(),
+			createMonsterCardAP(),
 		},
 		components = {
 			{
 				type = 'judgementday::components::MonsterCard',
-			},
-			{
-				type = 'crimild::BehaviorController',
-				events = {
-					createEventBehavior(
-						'begin_encounter',
-						createBehaviorTransform( { translate = { 0.0, 0.0, 0.0 } } )
-					),
-				},
 			},
 		},
 		transformation = config.transformation,

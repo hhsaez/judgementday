@@ -30,3 +30,14 @@ function createActionMedKit()
 	)
 end
 
+function createActionClaws()
+	return createAction(
+		{
+			name = 'Claws',
+			description = 'Deals 1 damage',
+			damage = 1,
+			cost = 3,
+		}
+	)
+end
+

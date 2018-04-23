@@ -4,6 +4,7 @@
 #include "components/Actor.hpp"
 #include "components/Board.hpp"
 #include "components/EncounterCard.hpp"
+#include "components/Monster.hpp"
 #include "components/MonsterCard.hpp"
 #include "components/Navigation.hpp"
 #include "components/Player.hpp"
@@ -28,6 +29,7 @@ void init_all( void )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Actor )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Board )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::EncounterCard )
+    CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Monster )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::MonsterCard )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Navigation )
     CRIMILD_SCRIPTING_REGISTER_BUILDER( judgementday::components::Player )

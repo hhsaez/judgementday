@@ -10,6 +10,8 @@ using namespace crimild::scripting;
 
 Actor::Actor( ScriptEvaluator &eval )
 {
+    eval.getPropValue( "name", _name );
+    eval.getPropValue( "description", _description );
 	eval.getPropValue( "hp", _hp );
 	eval.getPropValue( "maxHP", _maxHP );
 	eval.getPropValue( "ap", _ap );

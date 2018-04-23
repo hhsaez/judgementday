@@ -25,6 +25,12 @@ namespace judgementday {
         struct PlayerExecutedAction {};
 		struct EndPlayerMainPhase {};
 		struct EndPlayerTurn {};
+        struct PlayerKilled {};
+        
+        struct BeginMonsterTurn {};
+        struct MonsterDidAttack { crimild::Int16 damage; };
+        struct MonsterKilled {};
+        struct EndMonsterTurn {};
         
         struct CombatEnded {};
         
@@ -42,6 +48,9 @@ namespace judgementday {
 			virtual ~Board( void );
                 
             virtual void start( void ) override;
+                
+        private:
+            void startCombat( void );
 		};
 
 	}

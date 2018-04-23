@@ -1,5 +1,7 @@
 require 'assets/scripts/utils/behaviors'
 require 'assets/scripts/prefabs/encounter_card'
+require 'assets/scripts/prefabs/encounter_completed_card'
+require 'assets/scripts/prefabs/encounter_failed_card'
 require 'assets/scripts/prefabs/ui_combat'
 
 function createUIEventButton( config )
@@ -43,12 +45,34 @@ function createUIEncounter()
 	}
 end
 
+function createUIEncounterCompleted()
+	return {
+		type = 'crimild::Group',
+		name = 'encounterCompleted',
+		nodes = {
+			createEncounterCompletedCard(),
+		},
+	}
+end
+
+function createUIEncounterFailed()
+	return {
+		type = 'crimild::Group',
+		name = 'encounterFailed',
+		nodes = {
+			createEncounterFailedCard(),
+		},
+	}
+end
+
 function createUIBoard( config )
 	return {
 		type = 'crimild::Group',
 		nodes = {
 			createUIBoardPlay(),
 			createUIEncounter(),
+			createUIEncounterCompleted(),
+			createUIEncounterFailed(),
 			createUICombat(),
 		},
 		components = {
@@ -61,6 +85,8 @@ function createUIBoard( config )
 									behaviors = {
 										createBehaviorEnableNode( { node = 'play', enabled = true } ),
 										createBehaviorEnableNode( { node = 'encounter', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterFailed', enabled = false } ),
 										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
 									},
 								}
@@ -103,7 +129,7 @@ function createUIBoard( config )
 								{
 									behaviors = {
 										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
-										createBehaviorEnableNode( { node = 'play', enabled = true } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = true } ),
 									},
 								}
 							)
@@ -114,6 +140,18 @@ function createUIBoard( config )
 								{
 									behaviors = {
 										createBehaviorEnableNode( { node = 'play', enabled = true } ),
+										createBehaviorEnableNode( { node = 'encounterCompleted', enabled = false } ),
+									},
+								}
+							)
+						),
+						createEventBehavior(
+							'encounterDidFail',
+							createBehaviorSequence(
+								{
+									behaviors = {
+										createBehaviorEnableNode( { node = 'combat', enabled = false } ),
+										createBehaviorEnableNode( { node = 'encounterFailed', enabled = true } ),
 									},
 								}
 							)

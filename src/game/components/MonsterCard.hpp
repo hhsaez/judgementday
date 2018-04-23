@@ -7,7 +7,9 @@ namespace judgementday {
 
 	namespace components {
 
-		class MonsterCard : public crimild::NodeComponent {
+		class MonsterCard :
+            public crimild::NodeComponent,
+            public crimild::Messenger {
 			CRIMILD_IMPLEMENT_RTTI( judgementday::components::MonsterCard )
 			
 		public:
@@ -18,7 +20,11 @@ namespace judgementday {
 			virtual void update( const crimild::Clock & ) override;
             
         private:
+            crimild::Node *_monster = nullptr;
+            crimild::Text *_name = nullptr;
+            crimild::Text *_description = nullptr;
             crimild::Text *_hp = nullptr;
+            crimild::Text *_ap = nullptr;
 		};
 
 	}
