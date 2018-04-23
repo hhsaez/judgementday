@@ -76,8 +76,8 @@ function createPlayer()
 			},
 			{
 				type = 'judgementday::components::Actor',
-				hp = 10,
-				maxHP = 10,
+				hp = 20,
+				maxHP = 20,
 				ap = 0,
 				maxAP = 10,
 				deck = {
@@ -86,30 +86,6 @@ function createPlayer()
 					createActionPunch(),
 					createActionPunch(),
 					createActionPunch(),
-
-					createActionMedKit(),
-					createActionMedKit(),
-					createActionMedKit(),
-					createActionMedKit(),
-					createActionMedKit(),
-
-					createActionPistol(),
-					createActionPistol(),
-					createActionPistol(),
-					createActionPistol(),
-					createActionPistol(),
-
-					createActionLaserGun(),
-					createActionLaserGun(),
-					createActionLaserGun(),
-					createActionLaserGun(),
-					createActionLaserGun(),
-
-					createActionShotgun(),
-					createActionShotgun(),
-					createActionShotgun(),
-					createActionShotgun(),
-					createActionShotgun(),
 				}
 			},
 		},

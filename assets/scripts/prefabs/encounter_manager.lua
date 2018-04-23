@@ -285,8 +285,8 @@ local encounters = {
 			description = 'The light attracts you and you continue to move towards it with the feeling that you no longer have control over your own body. You try to resist the impulse, but your body keeps moving forward. The light becomes stronger and stronger and you feel that it envelops you, making you float.',
 			action = 'Let yourself go',
 			encounterType = 'endGame',
-			successDescription = 'You step into the light',
-			successAction = 'End Game',
+			successDescription = 'As you traverse the light, you can see the demonic hordes on the other side, awaiting for your arrival.\n\nThe fight has just begun.',
+			successAction = 'The End?',
 		}
 	),
 }
