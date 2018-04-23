@@ -24,6 +24,8 @@ EncounterManager::EncounterManager( ScriptEvaluator &eval )
         encounterEval.getPropValue( "title", info.title );
         encounterEval.getPropValue( "description", info.description );
         encounterEval.getPropValue( "action", info.action );
+        
+        encounterEval.getPropValue( "monsterId", info.monsterId );
 
         encounterEval.getPropValue( "successDescription", info.successDescription );
         encounterEval.getPropValue( "successAction", info.successAction );

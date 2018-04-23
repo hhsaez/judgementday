@@ -1,5 +1,6 @@
 #include "Board.hpp"
 #include "Navigation.hpp"
+#include "EncounterManager.hpp"
 #include "UIEventButton.hpp"
 #include "Player.hpp"
 #include "Monster.hpp"
@@ -62,7 +63,13 @@ void Board::start( void )
 
 void Board::startCombat( void )
 {
-    LuaSceneBuilder builder( "defaultMonster" );
+    auto player = Player::getInstance();
+    auto wp = player->getCurrentWaypoint();
+    auto id = wp->getName();
+    
+    auto encounter = EncounterManager::getInstance()->getEncounter( id );
+
+    LuaSceneBuilder builder( encounter.monsterId );
     auto monster = builder.fromFile( FileSystem::getInstance().pathForResource( "assets/scripts/prefabs/monster.lua" ) );
     getNode()->getRootParent< Group >()->attachNode( monster );
     monster->startComponents();
