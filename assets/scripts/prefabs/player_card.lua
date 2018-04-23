@@ -5,8 +5,8 @@ function createPlayerCardName( config )
 		type = 'crimild::Text',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
-		textColor = { 1.0, 1.0, 1.0, 1.0 },
-		text = 'player',
+		textColor = { 0.0, 0.0, 0.0, 1.0 },
+		text = 'Player',
 		textAnchor = 'center',
 		transformation = {
 			translate = { 0.0, 0.1, 0.0 },
@@ -20,7 +20,7 @@ function createPlayerCardHP( config )
 		name = 'hp',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
-		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textColor = { 0.0, 0.0, 0.0, 1.0 },
 		text = '0/0',
 		textAnchor = 'center',
 		transformation = {
@@ -35,7 +35,7 @@ function createPlayerCardAP( config )
 		name = 'ap',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
-		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textColor = { 0.0, 0.0, 0.0, 1.0 },
 		text = '0/0',
 		textAnchor = 'center',
 		transformation = {

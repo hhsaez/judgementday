@@ -55,7 +55,7 @@ void ActionCard::setAction( SharedPointer< Action > const &action )
     std::stringstream ss;
 
     _title->setText( _action->getName() );
-    _description->setText( StringUtils::splitLines( _action->getDescription(), 30 ) );
+    _description->setText( StringUtils::splitLines( _action->getDescription(), 20 ) );
     
     ss << "Cost: " << _action->getCost() << "AP";
     _cost->setText( ss.str() );

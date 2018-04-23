@@ -6,7 +6,7 @@ function createActionCardTitle( config )
 		name = 'title',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
-		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textColor = { 0.0, 0.0, 0.0, 1.0 },
 		textAnchor = 'center',
 		transformation = {
 			translate = { 0.0, 0.1, 0.0 },
@@ -20,7 +20,7 @@ function createActionCardDescription( config )
 		name = 'description',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
-		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textColor = { 0.0, 0.0, 0.0, 1.0 },
 		textAnchor = 'center',
 		transformation = {
 			translate = { 0.0, 0.0, 0.0 },
@@ -34,7 +34,7 @@ function createActionCardCost( config )
 		name = 'cost',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
-		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textColor = { 0.0, 0.0, 0.0, 1.0 },
 		textAnchor = 'center',
 		transformation = {
 			translate = { 0.0, -0.1, 0.0 },

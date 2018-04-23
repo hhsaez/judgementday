@@ -86,6 +86,30 @@ function createPlayer()
 					createActionPunch(),
 					createActionPunch(),
 					createActionPunch(),
+
+					createActionMedKit(),
+					createActionMedKit(),
+					createActionMedKit(),
+					createActionMedKit(),
+					createActionMedKit(),
+
+					createActionPistol(),
+					createActionPistol(),
+					createActionPistol(),
+					createActionPistol(),
+					createActionPistol(),
+
+					createActionLaserGun(),
+					createActionLaserGun(),
+					createActionLaserGun(),
+					createActionLaserGun(),
+					createActionLaserGun(),
+
+					createActionShotgun(),
+					createActionShotgun(),
+					createActionShotgun(),
+					createActionShotgun(),
+					createActionShotgun(),
 				}
 			},
 		},

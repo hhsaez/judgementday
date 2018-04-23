@@ -12,7 +12,7 @@ function createActionPunch()
 	return createAction(
 		{
 			name = 'Punch',
-			description = 'Deals 1 point of damage to target',
+			description = 'Deals 1 damage to target',
 			damage = 1,
 			cost = 2,
 		}
@@ -23,9 +23,31 @@ function createActionPistol()
 	return createAction(
 		{
 			name = 'Pistol',
-			description = 'Damage: 1',
+			description = 'Deals 1 damage to target',
 			damage = 1,
 			cost = 3,
+		}
+	)
+end
+
+function createActionLaserGun()
+	return createAction(
+		{
+			name = 'Laser Gun',
+			description = 'Deals 2 damage to target',
+			damage = 2,
+			cost = 4,
+		}
+	)
+end
+
+function createActionShotgun()
+	return createAction(
+		{
+			name = 'Shutgun',
+			description = 'Deals 4 damage to target',
+			damage = 4,
+			cost = 5,
 		}
 	)
 end

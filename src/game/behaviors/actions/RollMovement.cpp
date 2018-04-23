@@ -40,7 +40,7 @@ crimild::behaviors::Behavior::State RollMovement::step( crimild::behaviors::Beha
 		return crimild::behaviors::Behavior::State::FAILURE;
 	}
 
-    auto roll = 1;//Random::generate< crimild::Int8 >( 1, 7 );
+    auto roll = Random::generate< crimild::Int8 >( 1, 7 );
     
     auto current = wp->getComponent< Waypoint >();
     while ( roll > 0 && current->getNext() != nullptr ) {

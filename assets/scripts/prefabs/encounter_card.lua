@@ -6,11 +6,11 @@ function createEncounterCardTitle( config )
 		name = 'title',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
-		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textColor = { 0.0, 0.0, 0.0, 1.0 },
 		text = config.title,
 		textAnchor = 'center',
 		transformation = {
-			translate = { 0.0, 0.125, 0.0 },
+			translate = { 0.0, 0.135, 0.0 },
 		},
 	}
 end
@@ -21,11 +21,11 @@ function createEncounterCardDescription( config )
 		name = 'description',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.015,
-		textColor = { 1.0, 1.0, 1.0, 1.0 },
+		textColor = { 0.0, 0.0, 0.0, 1.0 },
 		text = config.text,
 		textAnchor = 'center',
 		transformation = {
-			translate = { 0.0, 0.075, 0.0 },
+			translate = { 0.0, 0.1, 0.0 },
 		},
 	}
 end
@@ -40,7 +40,7 @@ function createEncounterCardAction( config )
 		text = 'Fight!',
 		textAnchor = 'center',
 		transformation = {
-			translate = { 0.0, -0.15, 0.0 },
+			translate = { 0.0, -0.16, 0.0 },
 		},
 	}
 end

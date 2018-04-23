@@ -39,14 +39,26 @@ monsterImp = createMonster(
 	}
 )
 
+monsterSuccubus = createMonster(
+	{
+		name = 'Succubus',
+		lore = 'A female demon, incredibly fast',
+		maxHP = 4,
+		maxAP = 3,
+		actions = {
+			createAction( { damage = 1, cost = 2 } ),
+		},
+	}
+)
+
 monsterFleshNighmare = createMonster(
 	{
 		name = 'Flesh Nighmare',
 		lore = 'A pile of flesh and bone',
 		maxHP = 8,
-		maxAP = 3,
+		maxAP = 5,
 		actions = {
-			createAction( { damage = 2, cost = 3 } ),
+			createAction( { damage = 3, cost = 5 } ),
 		},
 	}
 )
@@ -63,14 +75,14 @@ monsterCyberDemon = createMonster(
 	}
 )
 
-monsterDemonLord = createMonster(
+monsterDemonKnight = createMonster(
 	{
 		name = 'Demon Knight',
 		lore = 'A humanoid demon',
 		maxHP = 8,
 		maxAP = 5,
 		actions = {
-			createAction( { damage = 3, cost = 3 } ),
+			createAction( { damage = 3, cost = 5 } ),
 		},
 	}
 )
@@ -82,7 +94,7 @@ monsterDemonLord = createMonster(
 		maxHP = 10,
 		maxAP = 10,
 		actions = {
-			createAction( { damage = 4, cost = 5 } ),
+			createAction( { damage = 4, cost = 7 } ),
 		},
 	}
 )

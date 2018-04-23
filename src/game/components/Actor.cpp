@@ -81,9 +81,15 @@ void Actor::onCombatBegan( void )
     getDiscarded().clear();
     getHand().clear();
     
-    getStack().clear();
-    getDeck().each( [ this ]( SharedPointer< Action > &action, crimild::Size ) {
-        getStack().push( action );
+    std::vector< SharedPointer< Action >> actions;
+    getDeck().each( [ &actions ]( SharedPointer< Action > &action, crimild::Size ) {
+        actions.push_back( action );
     });
+    std::random_shuffle( std::begin( actions ), std::end( actions ) );
+    
+    getStack().clear();
+    for ( auto a : actions ) {
+        getStack().push( a );
+    }
 }
 
