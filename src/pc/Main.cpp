@@ -48,8 +48,8 @@ int main( int argc, char **argv )
     init_all();
     
     auto settings = crimild::alloc< LuaSettings >( argc, argv );
-    settings->set( "video.width", 1024 );
-    settings->set( "video.height", 768 );
+    settings->set( "video.width", 800 );
+    settings->set( "video.height", 600 );
     settings->set( "video.fullscreen", false );
     settings->parseCommandLine( argc, argv );
 
