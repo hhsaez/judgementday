@@ -20,7 +20,7 @@ namespace judgementday {
 			virtual void update( const crimild::Clock & ) override;
             
         private:
-            crimild::Node *_monster = nullptr;
+            crimild::SharedPointer< crimild::Node > _monster;
             crimild::Text *_name = nullptr;
             crimild::Text *_description = nullptr;
             crimild::Text *_hp = nullptr;

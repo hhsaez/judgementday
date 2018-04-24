@@ -33,13 +33,19 @@ void EncounterCard::start( void )
     
     registerMessageHandler< crimild::messaging::BehaviorEvent >( [ this ]( crimild::messaging::BehaviorEvent const &m ) {
         if ( m.name == "encounterWillStart" && _cardType == CardType::ENCOUNTER_BEGIN ) {
-            prepareForEncounter();
+			crimild::concurrency::sync_frame( [ this ]() {
+				prepareForEncounter();
+			});
         }
         else if ( m.name == "encounterDidSucceed" && _cardType == CardType::ENCOUNTER_SUCCEEDED ) {
-            prepareForEncounter();
+			crimild::concurrency::sync_frame( [ this ]() {
+				prepareForEncounter();
+			});
         }
         else if ( m.name == "encounterDidFail" && _cardType == CardType::ENCOUNTER_FAILED ) {
-            prepareForEncounter();
+			crimild::concurrency::sync_frame( [ this ]() {
+				prepareForEncounter();
+			});
         }
     });
 }

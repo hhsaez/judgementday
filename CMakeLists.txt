@@ -5,7 +5,6 @@ PROJECT( JudgementDay )
 SET( CRIMILD_ENABLE_SCRIPTING ON CACHE BOOL "Enable scripting module for Crimild" )
 SET( CRIMILD_ENABLE_IMPORT ON CACHE BOOL "Enable import module for Crimild" )
 SET( CRIMILD_ENABLE_GLFW ON CACHE BOOL "Enable glfw module for Crimild" )
-SET( CRIMILD_SCRIPTING_LOG_VERBOSE ON CACHE BOOL "Enable verbose logging for Crimild" )
 
 IF ( APPLE ) 
 	SET( CRIMILD_ENABLE_AL ON CACHE BOOL "Enable al module for Crimild" )

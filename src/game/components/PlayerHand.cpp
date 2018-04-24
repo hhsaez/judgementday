@@ -44,26 +44,28 @@ void PlayerHand::start( void )
 
 void PlayerHand::refreshCards( void )
 {
-	auto root = getNode< Group >();
-	
-	auto playerActor = _player->getComponent< Actor >();
-
-	const auto cardsInHand = playerActor->getHand().size();
-
-    crimild::Size i = 0;
-    for ( ; i < cardsInHand; i++ ) {
-        auto cardNode = root->getNodeAt( i );
-        auto card = cardNode->getComponent< ActionCard >();
-        
-        if ( auto action = playerActor->getHand()[ i ] ) {
-            cardNode->setEnabled( true );
-            card->setAction( action );
-        }
-    }
-    
-    for ( ; i < root->getNodeCount(); i++ ) {
-        root->getNodeAt( i )->setEnabled( false );
-    }
+	crimild::concurrency::sync_frame( [ this ]() {
+		auto root = getNode< Group >();
+		
+		auto playerActor = _player->getComponent< Actor >();
+		
+		const auto cardsInHand = playerActor->getHand().size();
+		
+		crimild::Size i = 0;
+		for ( ; i < cardsInHand; i++ ) {
+			auto cardNode = root->getNodeAt( i );
+			auto card = cardNode->getComponent< ActionCard >();
+			
+			if ( auto action = playerActor->getHand()[ i ] ) {
+				cardNode->setEnabled( true );
+				card->setAction( action );
+			}
+		}
+		
+		for ( ; i < root->getNodeCount(); i++ ) {
+			root->getNodeAt( i )->setEnabled( false );
+		}
+	});
 
 }
 

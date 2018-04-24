@@ -28,17 +28,21 @@ void MonsterCard::start( void )
     _ap = root->getNode< Text >( "ap" );
     
     registerMessageHandler< messaging::CombatBegan >( [ this ]( messaging::CombatBegan ) {
-		_monster = nullptr;
-		auto scene = getNode()->getRootParent();
-		scene->perform( Apply( [ this ]( Node *node ) {
-			if ( node->getComponent< Monster >() != nullptr ) {
-				_monster = node;
-			}
-		}));
+		crimild::concurrency::sync_frame( [ this ]() {
+			_monster = nullptr;
+			auto scene = getNode()->getRootParent();
+			scene->perform( Apply( [ this ]( Node *node ) {
+				if ( node->getComponent< Monster >() != nullptr ) {
+					_monster = crimild::retain( node );
+				}
+			}));
+		});
 	});
 
 	registerMessageHandler< messaging::CombatEnded >( [ this ]( messaging::CombatEnded ) {
-		_monster = nullptr;
+		crimild::concurrency::sync_frame( [ this ]() {
+			_monster = nullptr;
+		});
 	});
 }
 

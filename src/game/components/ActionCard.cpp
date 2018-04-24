@@ -50,14 +50,16 @@ void ActionCard::start( void )
 
 void ActionCard::setAction( SharedPointer< Action > const &action )
 {
-    _action = action;
-    
-    std::stringstream ss;
-
-    _title->setText( _action->getName() );
-    _description->setText( StringUtils::splitLines( _action->getDescription(), 20 ) );
-    
-    ss << "Cost: " << _action->getCost() << "AP";
-    _cost->setText( ss.str() );
+	crimild::concurrency::sync_frame( [ this, action ]() {
+		_action = action;
+		
+		std::stringstream ss;
+		
+		_title->setText( _action->getName() );
+		_description->setText( StringUtils::splitLines( _action->getDescription(), 20 ) );
+		
+		ss << "Cost: " << _action->getCost() << "AP";
+		_cost->setText( ss.str() );
+	});
 }
 

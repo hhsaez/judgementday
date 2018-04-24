@@ -63,18 +63,20 @@ void Board::start( void )
 
 void Board::startCombat( void )
 {
-    auto player = Player::getInstance();
-    auto wp = player->getCurrentWaypoint();
-    auto id = wp->getName();
-    
-    auto encounter = EncounterManager::getInstance()->getEncounter( id );
-
-    LuaSceneBuilder builder( encounter.monsterId );
-    auto monster = builder.fromFile( FileSystem::getInstance().pathForResource( "assets/scripts/prefabs/monster.lua" ) );
-    getNode()->getRootParent< Group >()->attachNode( monster );
-    monster->startComponents();
-    
-    broadcastMessage( messaging::CombatBegan {} );
-    broadcastMessage( messaging::BeginPlayerTurn {} );
-
+	crimild::concurrency::sync_frame( [ this ]() {
+		auto player = Player::getInstance();
+		auto wp = player->getCurrentWaypoint();
+		auto id = wp->getName();
+		
+		auto encounter = EncounterManager::getInstance()->getEncounter( id );
+		
+		LuaSceneBuilder builder( encounter.monsterId );
+		auto monster = builder.fromFile( FileSystem::getInstance().pathForResource( "assets/scripts/prefabs/monster.lua" ) );
+		getNode()->getRootParent< Group >()->attachNode( monster );
+		monster->startComponents();
+		
+		broadcastMessage( messaging::CombatBegan {} );
+		broadcastMessage( messaging::BeginPlayerTurn {} );
+	});
 }
+

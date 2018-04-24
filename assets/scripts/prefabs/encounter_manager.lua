@@ -10,7 +10,7 @@ function createEncounter( config )
 		monsterId = config.monsterId,
 		successDescription = config.successDescription,
 		successAction = config.successAction,
-		loot = config.loot,
+		loot = config.loot or {},
 		failureDescription = config.failureDescription or 'You Died',
 		failureAction = config.failureAction or 'Restart',
 	}

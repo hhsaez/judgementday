@@ -47,7 +47,9 @@ void Actor::update( const Clock &c )
 
 void Actor::addActionsToDeck( ActionArray &actions )
 {
-    actions.each( [ this ]( SharedPointer< Action > &action, crimild::Size ) {
+    std::cout << "Adding cards" << std::endl;
+    actions.each( [ this ]( SharedPointer< Action > &action, crimild::Size i ) {
+        std::cout << "\t" << i << " " << action->getName() << std::endl;
         _deck.add( action );
     });
 }
@@ -64,6 +66,12 @@ bool Actor::drawCard( crimild::Int16 maxHandSize )
     
     auto action = getStack().pop();
     getHand().add( action );
+    
+    std::cout << "Drawing card" << std::endl;
+    getHand().each( []( SharedPointer< Action > &action, crimild::Size i ) {
+        std::cout << "\t" << i << " " << action->getName() << std::endl;
+    });
+    
     return true;
 }
 
@@ -91,5 +99,10 @@ void Actor::onCombatBegan( void )
     for ( auto a : actions ) {
         getStack().push( a );
     }
+    
+    std::cout << "Preparing cards" << std::endl;
+    getStack().each( []( SharedPointer< Action > &action, crimild::Size i ) {
+        std::cout << "\t" << i << " " << action->getName() << std::endl;
+    });
 }
 
