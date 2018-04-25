@@ -56,7 +56,7 @@ void MonsterCard::update( const Clock & )
 	std::stringstream ss;
 
 	_name->setText( actor->getName() );
-	_description->setText( actor->getDescription() );
+	_description->setText( StringUtils::splitLines( actor->getDescription(), 30 ) );
 	
     ss << "HP: " << actor->getHP() << "/" << actor->getMaxHP();
 	_hp->setText( ss.str() );

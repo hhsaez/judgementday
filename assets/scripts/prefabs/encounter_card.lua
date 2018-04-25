@@ -76,7 +76,9 @@ function createEncounterCard( config )
 				},
 			},
 		},
-		transformation = config.transformation,
+		transformation = {
+			scale = 1.75,
+		},
 	}
 end
 

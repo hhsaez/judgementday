@@ -11,23 +11,26 @@ function createUICombat()
 			createPlayerCard(
 				{
 					transformation = {
-						translate = { -0.5, 0.2, -0.5 },
+						translate = { -0.35, 0.2, -0.5 },
 						rotate_euler = { 0.0, 30.0, 0.0 },
+						scale = 1.5,
 					},
 				}
 			),
 			createMonsterCard(
 				{
 					transformation = {
-						translate = { 0.5, 0.2, -0.5 },
+						translate = { 0.35, 0.2, -0.5 },
 						rotate_euler = { 0.0, -30.0, 0.0 },
+						scale = 1.5,
 					},
 				}
 			),
 			createPlayerHand(
 				{
 					transformation = {
-						translate = { 0.0, -0.5, -1.0 },
+						translate = { 0.0, -0.45, -1.0 },
+						scale = 1.35,
 					},
 				}
 			),

@@ -59,10 +59,12 @@ void EncounterCard::prepareForEncounter( void )
     auto encounter = EncounterManager::getInstance()->getEncounter( id );
     
     _title->setText( encounter.title );
+
+	auto lineSize = 30;
     
     switch ( _cardType ) {
         case CardType::ENCOUNTER_BEGIN: {
-            _description->setText( StringUtils::splitLines( encounter.description, 35 ) );
+            _description->setText( StringUtils::splitLines( encounter.description, lineSize ) );
             _action->setText( encounter.action );
             switch ( encounter.type ) {
                 case EncounterInfo::Type::END_GAME:
@@ -79,7 +81,7 @@ void EncounterCard::prepareForEncounter( void )
         }
             
         case CardType::ENCOUNTER_SUCCEEDED: {
-            _description->setText( StringUtils::splitLines( encounter.successDescription, 35 ) );
+            _description->setText( StringUtils::splitLines( encounter.successDescription, lineSize ) );
             _action->setText( encounter.successAction );
             switch ( encounter.type ) {
                 case EncounterInfo::Type::END_GAME:
@@ -95,7 +97,7 @@ void EncounterCard::prepareForEncounter( void )
         }
             
         case CardType::ENCOUNTER_FAILED: {
-            _description->setText( StringUtils::splitLines( encounter.failureDescription, 35 ) );
+            _description->setText( StringUtils::splitLines( encounter.failureDescription, lineSize ) );
             _action->setText( encounter.failureAction );
             _action->attachComponent< UIEventButton >( "restartGame" );
             break;

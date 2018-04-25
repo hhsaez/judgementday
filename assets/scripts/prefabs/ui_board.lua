@@ -7,7 +7,7 @@ function createUIEventButton( config )
 		type = 'crimild::Text',
 		font = 'assets/fonts/Verdana',
 		textSize = 0.025,
-		textColor = { 1.0, 1.0, 0.0, 1.0 },
+		textColor = config.color or { 1.0, 1.0, 0.0, 1.0 },
 		text = config.title,
 		textAnchor = 'center',
 		components = {
@@ -18,6 +18,7 @@ function createUIEventButton( config )
 		},
 		transformation = {
 			translate = config.translate,
+			scale = config.scale or 1.0,
 		},
 	}
 end
@@ -28,7 +29,7 @@ function createUIBoardPlay()
 		name = 'play',
 		nodes = {
 			createUIEventButton( { eventName = 'quit', title = 'QUIT', translate = { -0.5, 0.375, 0.0 } } ),
-			createUIEventButton( { eventName = 'move', title = 'MOVE', translate = { 0.0, -0.375, 0.0 } } ),
+			createUIEventButton( { eventName = 'move', title = 'MOVE', translate = { 0.0, -0.4, 0.0 }, color = { 1.0, 0.0, 0.0, 1.0 }, scale = 2.0, } ),
 		},
 	}
 end

@@ -46,6 +46,8 @@ void init_all( void )
 int main( int argc, char **argv )
 {
     init_all();
+
+	//Log::setOutputHandler< Log::FileOutputHandler >( FileSystem::getInstance().pathForDocument( "log.txt" ) );
     
     auto settings = crimild::alloc< LuaSettings >( argc, argv );
     settings->set( "video.width", 800 );

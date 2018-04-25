@@ -12,7 +12,7 @@ local board = createBoard()
 local camera = {
 	type = 'crimild::Camera',
 	transformation = {
-		translate = { 0.0, 60.0, 20.0 },
+		translate = { 0.0, 55.0, 5.0 },
 		lookAt = { 0.0, 0.0, 0.0 },
 	},
 	nodes = {
