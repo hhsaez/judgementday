@@ -40,7 +40,7 @@ function createEncounterCardAction( config )
 		text = 'Fight!',
 		textAnchor = 'center',
 		transformation = {
-			translate = { 0.0, -0.16, 0.0 },
+			translate = { 0.0, -0.175, 0.0 },
 		},
 	}
 end
@@ -54,7 +54,7 @@ function createEncounterCard( config )
 			{
 				filename = 'assets/models/encounter_card.obj',
 				transformation = {
-					scale = 0.2,
+					scale = 0.225,
 					translate = { 0.0, 0.0, -0.1 },
 				},
 			},
